@@ -7,8 +7,8 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("--mode", help="Specify inc if increasing the size from the minimum cross-sections; specify dec if reducing the size from the maximum cross-sections.", default="inc", type=str)
 parser.add_argument("--test_model", help="Structural model to test the trained model's performance", default=1, type=int)
-parser.add_argument("--train", help="True if implement the training. False if only using the pre-trained machine learning model.", default=False, type=bool)
-parser.add_argument("--use_gpu", help="Use GPU if True, use CPU if False", default=False, type=bool)
+parser.add_argument("--train", help="True if implement the training. False if only using the pre-trained machine learning model.", action='store_true')
+parser.add_argument("--use_gpu", help="Use GPU if True, use CPU if False", action='store_true')
 parser.add_argument("--n_episode", help="Number of episodes to train the machine learning model.", default=5000, type=int)
 args = parser.parse_args()
 
