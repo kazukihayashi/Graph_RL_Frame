@@ -4,7 +4,7 @@ from matplotlib.lines import Line2D
 import numpy as np
 import os
 
-if ~os.path.exists("result"):
+if not os.path.exists("result"):
 	os.makedirs("result")
 
 def Draw(node, connectivity, line_width, node_color=None, line_color=None, node_text=None, line_text=None, vector=None, hinge=None, scale=0.006, name=0): # model b: scale = 0.008 model c: scale = 0.006, else 0.01
