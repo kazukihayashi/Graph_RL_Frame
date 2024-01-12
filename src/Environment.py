@@ -86,17 +86,23 @@ class Environment():
         v, w, C, infeasible_action = self.env.reset(test=test_model)
         self.agent = Agent.Agent(v.shape[1],w.shape[1],N_FEATURE,infeasible_action.shape[1],False)
         self.agent.brain.model.Load(filename="trained_model_{0}_{1}".format(env.__name__,self.mode))
-        self.env.render()
+        self.env.render(show=True,title="Initial cross-sections")
         total_reward = 0.0
 
         for i in range(MAX_STEPS):
-            print('step:'+str(i+1))
+            if i%10==9:
+                print('step:'+str(i+1))
             action, _ = self.agent.get_action(v,w,C,0.0,infeasible_action)
             v, w, reward ,ep_end, infeasible_action = self.env.step(action)
             # print(action)
-            # if i > 384:
-                # self.env.render()
             total_reward += reward
+            
             if ep_end:
-                self.env.render()
+                if self.mode=="inc":
+                    self.env.render(show=True,title="After optimization ({0} steps)".format(i+1))
+                elif self.mode=="dec":
+                    self.env.sec_num[action[0]] += 50
+                    self.env.render(show=True,title="After optimization ({0} steps)".format(i))
                 break
+
+                    

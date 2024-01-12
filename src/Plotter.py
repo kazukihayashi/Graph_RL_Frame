@@ -7,7 +7,7 @@ import os
 if not os.path.exists("result"):
 	os.makedirs("result")
 
-def Draw(node, connectivity, line_width, node_color=None, line_color=None, node_text=None, line_text=None, vector=None, hinge=None, scale=0.006, name=0): # model b: scale = 0.008 model c: scale = 0.006, else 0.01
+def Draw(node, connectivity, line_width, node_color=None, line_color=None, node_text=None, line_text=None, vector=None, hinge=None, scale=0.006, name=0, show=False, title=None): # model b: scale = 0.008 model c: scale = 0.006, else 0.01
 	"""
 	node[nk][3]or[nk][2]:(float) nodal coordinates
 	connectivity[nm][2]	:(int)   connectivity to define member
@@ -63,19 +63,22 @@ def Draw(node, connectivity, line_width, node_color=None, line_color=None, node_
 		pyplot.tick_params(labelbottom="off",bottom="off",labelleft="off",left="off")
 		pyplot.axis('scaled')
 		pyplot.axis('off')
+		if title is not None:
+			pyplot.title(title)
 		if type(name) is int:
 			# pyplot.savefig(r'result\{0:0=4}.pdf'.format(name),transparent=True)
-			pyplot.savefig(r'result\{0:0=4}.pdf'.format(name),dpi=150,transparent=True)
+			pyplot.savefig(r'result/{0:0=4}.pdf'.format(name),dpi=150,transparent=True)
 		elif type(name) is str:
-			pyplot.savefig(r'result\{0}.pdf'.format(name),transparent=True)
+			pyplot.savefig(r'result/{0}.pdf'.format(name),transparent=True)
 			# pyplot.savefig(r'result\{0}.png'.format(name),dpi=150,transparent=True)
-		# pyplot.show()
-		pyplot.close(fig)
+		if show:
+			pyplot.show()
+		pyplot.close()
 
 	else:
 		raise TypeError("node must eliminate z coordinates.")
 
-	return fig
+	return
 
 def graph(y,name=0):
 	x = np.linspace(0,len(y)-1,len(y)).astype(int)
@@ -85,7 +88,7 @@ def graph(y,name=0):
 	pyplot.xticks(xt,xt)
 
 	# save figure
-	pyplot.savefig(r"result\graph("+str(name)+").png")
+	pyplot.savefig(r"result/graph("+str(name)+").png")
 	##pyplot.show()
 	pyplot.close()
 

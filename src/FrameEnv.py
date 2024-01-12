@@ -685,7 +685,7 @@ class Frame():
 			feasible = False
 		return feasible
 
-	def render(self, mode='section'):
+	def render(self,mode='section',show=False,title=None):
 		'''
 		mode = 'shape'
 		  No annotation is provided. Just nodes and lines are illustrated. 
@@ -781,19 +781,19 @@ class Frame():
 					l_text.append('')			
 		
 		if mode == 'shape':
-			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=None,line_text=None,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=None,line_text=None,name=self.steps,show=show,title=title)
 		elif mode == 'section':
-			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps,show=show,title=title)
 		elif mode == 'stress':
-			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps,show=show,title=title)
 		elif mode == 'COF':
-			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=n_color,line_color=None,node_text=n_text,line_text=None,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=n_color,line_color=None,node_text=n_text,line_text=None,name=self.steps,show=show,title=title)
 		elif mode == 'disp' or mode == 'ultimate':
-			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity,line_width=l_width,node_color=None,line_color=l_color,node_text=None,line_text=l_text,name=self.steps,show=show,title=title)
 		elif mode == 'load':
-			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=n_text,line_text=None,vector=vector2d,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=n_text,line_text=None,vector=vector2d,name=self.steps,show=show,title=title)
 		elif mode == 'hinge':
-			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=None,line_text=None,vector=None,hinge=hinge,name=self.steps)
+			outfile = Plotter.Draw(node2d,self.connectivity_dummy,line_width=l_width,node_color=None,line_color=None,node_text=None,line_text=None,vector=None,hinge=hinge,name=self.steps,show=show,title=title)
 		else:
 			raise Exception("Unexpected mode selection.")
 
