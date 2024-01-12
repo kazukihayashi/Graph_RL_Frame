@@ -66,11 +66,11 @@ def Draw(node, connectivity, line_width, node_color=None, line_color=None, node_
 		if title is not None:
 			pyplot.title(title)
 		if type(name) is int:
-			# pyplot.savefig(r'result\{0:0=4}.pdf'.format(name),transparent=True)
-			pyplot.savefig(r'result/{0:0=4}.pdf'.format(name),dpi=150,transparent=True)
+			# pyplot.savefig(r'result/{0:0=4}.pdf'.format(name),transparent=True)
+			pyplot.savefig(r'result/{0:0=4}.png'.format(name),dpi=150,transparent=True)
 		elif type(name) is str:
-			pyplot.savefig(r'result/{0}.pdf'.format(name),transparent=True)
-			# pyplot.savefig(r'result\{0}.png'.format(name),dpi=150,transparent=True)
+			# pyplot.savefig(r'result/{0}.pdf'.format(name),transparent=True)
+			pyplot.savefig(r'result/{0}.png'.format(name),dpi=150,transparent=True)
 		if show:
 			pyplot.show()
 		pyplot.close()
